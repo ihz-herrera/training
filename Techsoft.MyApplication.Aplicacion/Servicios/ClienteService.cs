@@ -15,10 +15,12 @@ namespace Techsoft.MyApplication.Aplicacion.Servicios
     {
         private readonly IRepositorio<Cliente> _repo ;
 
-        public ClienteService()
+        public ClienteService(IRepositorio<Cliente> repo)
         {
-            _repo = RepositorioFabrik.CrearRepositorio<Cliente>
-                (RepositorioFabrik.DBOptions.SQLServer);
+            //_repo = RepositorioFabrik.CrearRepositorio<Cliente>
+            //    (RepositorioFabrik.DBOptions.SQLServer);
+
+            _repo = repo;
         }
 
 

@@ -18,14 +18,15 @@ namespace MyApplication.Fabricas
             Txt
         }
 
+        [Obsolete("Metodo Obsoleto, usar Inyector de dependencias",true)]
         public static IRepositorio<T> CrearRepositorio<T>(DBOptions dbOptions) where T : Entity
         {
             switch (dbOptions)
             {
-                case  DBOptions.SQLServer:
-                    return new RepositorioSQLServer<T>();
-                case DBOptions.SQLLite:
-                    return new RepositorioSQLLite<T>();
+                //case  DBOptions.SQLServer:
+                //    return new RepositorioSQLServer<T>();
+                //case DBOptions.SQLLite:
+                //    return new RepositorioSQLLite<T>();
                 case DBOptions.Txt:
                     return new RepositorioTxt<T>();
                 default:
