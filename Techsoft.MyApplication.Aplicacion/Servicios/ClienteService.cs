@@ -47,5 +47,10 @@ namespace Techsoft.MyApplication.Aplicacion.Servicios
         {
             return _repo.ConsultarTodos();
         }
+
+        public async Task<Cliente> ConsultarPorId(Guid id)
+        {
+            return await _repo.ConsultarPorId(id);
+        }
     }
 }

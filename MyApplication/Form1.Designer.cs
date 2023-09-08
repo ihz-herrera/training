@@ -39,6 +39,8 @@
             label4 = new Label();
             txtApellido = new TextBox();
             label5 = new Label();
+            txtId = new TextBox();
+            btnBuscar = new Button();
             SuspendLayout();
             // 
             // btnGuardar
@@ -131,11 +133,30 @@
             label5.TabIndex = 9;
             label5.Text = "Apellido";
             // 
+            // txtId
+            // 
+            txtId.Location = new Point(560, 74);
+            txtId.Name = "txtId";
+            txtId.Size = new Size(189, 27);
+            txtId.TabIndex = 10;
+            // 
+            // btnBuscar
+            // 
+            btnBuscar.Location = new Point(559, 121);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(190, 29);
+            btnBuscar.TabIndex = 11;
+            btnBuscar.Text = "Buscar";
+            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.Click += btnBuscar_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(581, 456);
+            ClientSize = new Size(808, 456);
+            Controls.Add(btnBuscar);
+            Controls.Add(txtId);
             Controls.Add(txtApellido);
             Controls.Add(label5);
             Controls.Add(txtEdad);
@@ -166,5 +187,7 @@
         private Label label4;
         private TextBox txtApellido;
         private Label label5;
+        private TextBox txtId;
+        private Button btnBuscar;
     }
 }

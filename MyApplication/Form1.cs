@@ -1,4 +1,9 @@
+using MyApplication.Entidades;
+
+using Newtonsoft.Json;
 using Techsoft.MyApplication.Aplicacion.Servicios;
+using MyApplication.Repositorio;
+using MyApplication.Contratos;
 
 namespace MyApplication
 {
@@ -16,8 +21,8 @@ namespace MyApplication
 
             //DbOptions = Configuracion.Instancia(DBOptions.SQLServer).DbOption;
 
-            _clienteService = new ClienteService();
-            
+            //_clienteService = new ClienteService();
+
         }
 
         private void LimpiarControles()
@@ -36,7 +41,7 @@ namespace MyApplication
 
             try
             {
-                _clienteService.Guardar( txtNombre.Text, txtApellido.Text, txtTelefono.Text,
+                _clienteService.Guardar(txtNombre.Text, txtApellido.Text, txtTelefono.Text,
                                        txtDireccion.Text, int.Parse(txtEdad.Text));
 
 
@@ -71,5 +76,34 @@ namespace MyApplication
 
         }
 
+        private async void btnBuscar_Click(object sender, EventArgs e)
+        {
+            btnBuscar.Enabled = false;
+            btnGuardar.Enabled = false;
+
+            var clienteId = Guid.Parse(txtId.Text);
+
+            try
+            {
+                IRepositorio<Cliente> repo = new ClientesRepository();
+                var result = await repo.ConsultarPorId(clienteId);
+                
+                txtNombre.Text = result.Nombre;
+                txtApellido.Text = result.Apellido;
+                txtTelefono.Text = result.Telefono;
+                txtDireccion.Text = result.Direccion;
+                txtEdad.Text = result.Edad.ToString();
+               
+            } catch (InvalidOperationException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                btnBuscar.Enabled = true;
+                btnGuardar.Enabled = true;
+            }
+
+        }
     }
 }

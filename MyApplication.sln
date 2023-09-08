@@ -28,7 +28,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApplication.NetFramework.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{D6A286FA-D70C-48BD-9A75-85D0D8500473}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechSoft.MyApplication.Api", "TechSoft.MyApplication.Api\TechSoft.MyApplication.Api.csproj", "{EAAA9EFE-762E-4D2F-AC70-B4DB85323E97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechSoft.MyApplication.Api", "TechSoft.MyApplication.Api\TechSoft.MyApplication.Api.csproj", "{EAAA9EFE-762E-4D2F-AC70-B4DB85323E97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

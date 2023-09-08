@@ -12,21 +12,22 @@ internal class Program
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
-        //var connectionString = builder.Configuration
-        //    .GetConnectionString("SQLServer");
-
-        //builder.Services.AddDbContext<Context>(options =>
-        //    options.UseSqlServer(connectionString));
-
         var connectionString = builder.Configuration
-            .GetConnectionString("SQLite");
+            .GetConnectionString("SQLServer");
 
         builder.Services.AddDbContext<Context>(options =>
-            options.UseSqlite(connectionString));
+            options.UseSqlServer(connectionString));
+
+        //var connectionString = builder.Configuration
+        //    .GetConnectionString("SQLite");
+
+        //builder.Services.AddDbContext<Context>(options =>
+        //    options.UseSqlite(connectionString));
 
         builder.Services.AddScoped<IRepositorio<Cliente>, RepositorioSQLServer<Cliente>>();
 
         builder.Services.AddScoped<ClienteService>();
+        
 
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

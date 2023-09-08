@@ -25,6 +25,13 @@ namespace MyApplication.Repositorios
 
         public T Consultar(T entidad)  => _context.Set<T>().FirstOrDefault();
 
+        public async Task<Cliente> ConsultarPorId(Guid id)
+        {
+           return await _context.Set<Cliente>()
+                .FirstOrDefaultAsync(c => c.ClienteId == id);
+            
+        }
+
         public List<T> ConsultarTodos()  => _context.Set<T>().ToList();
         
         public void Guardar(T entity) 

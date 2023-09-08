@@ -15,6 +15,11 @@ namespace MyApplication.Repositorios
             throw new NotImplementedException();
         }
 
+        public Cliente ConsultarPorId(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<T> ConsultarTodos() 
         {
             throw new NotImplementedException();
