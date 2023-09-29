@@ -49,5 +49,10 @@ namespace MyApplication.Repositorio
         {
             throw new NotImplementedException();
         }
+
+        Task<List<Cliente>> IRepositorio<Cliente>.ConsultarTodos()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace MyApplication.Contratos
 
         T Consultar(T entidad) ;
 
-        List<T> ConsultarTodos() ;
+        Task<List<T>> ConsultarTodos() ;
         Task<Cliente> ConsultarPorId(Guid id);
     }
 }

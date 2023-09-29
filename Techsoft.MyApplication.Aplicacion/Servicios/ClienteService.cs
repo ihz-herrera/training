@@ -29,23 +29,25 @@ namespace Techsoft.MyApplication.Aplicacion.Servicios
             var cliente = new Cliente(nombre, apellido, telefono, direccion, edad);
 
             //Aseguramos que el cliente no se repita
-            ClienteNotExists(cliente);
+            //ClienteNotExists(cliente);
 
             _repo.Guardar(cliente);
         }
 
         //Guarda
-        private void ClienteNotExists(Cliente cliente)
+        private async void ClienteNotExists(Cliente cliente)
         {
-           if( ConsultarTodos().Where(c=> c.Nombre == cliente.Nombre
+          var clientes = await ConsultarTodos();
+
+           if( clientes.Where(c=> c.Nombre == cliente.Nombre
             && c.Apellido == cliente.Apellido).Count()>0 )
                 throw new InvalidOperationException($"El cliente {cliente.Nombre} {cliente.Apellido} ya existe en la base de datos");
         }
 
 
-        public List<Cliente> ConsultarTodos()
+        public async Task<List<Cliente>> ConsultarTodos()
         {
-            return _repo.ConsultarTodos();
+            return await _repo.ConsultarTodos();
         }
 
         public async Task<Cliente> ConsultarPorId(Guid id)

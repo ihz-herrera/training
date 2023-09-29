@@ -25,16 +25,18 @@ namespace MyApplication.Repositorios
 
         public T Consultar(T entidad)  => _context.Set<T>().FirstOrDefault();
 
-        public async Task<Cliente> ConsultarPorId(Guid id)
+        public virtual async Task<Cliente> ConsultarPorId(Guid id)
         {
+           Thread.Sleep(10000);
+
            return await _context.Set<Cliente>()
                 .FirstOrDefaultAsync(c => c.ClienteId == id);
             
         }
 
-        public List<T> ConsultarTodos()  => _context.Set<T>().ToList();
+        public async Task<List<T>> ConsultarTodos()  => await _context.Set<T>().ToListAsync();
         
-        public void Guardar(T entity) 
+        public virtual void Guardar(T entity) 
         {
             _context.Set<T>().Add(entity);
             _context.SaveChanges();

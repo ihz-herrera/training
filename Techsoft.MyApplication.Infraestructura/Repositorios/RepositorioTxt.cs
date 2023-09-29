@@ -20,7 +20,7 @@ namespace MyApplication.Repositorios
             throw new NotImplementedException();
         }
 
-        public List<T> ConsultarTodos() 
+        public async Task<List<T>> ConsultarTodos() 
         {
             throw new NotImplementedException();
         }
@@ -33,6 +33,11 @@ namespace MyApplication.Repositorios
             {
                 db.WriteLine(entity.ToString());
             }
+        }
+
+        Task<Cliente> IRepositorio<T>.ConsultarPorId(Guid id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

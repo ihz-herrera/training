@@ -21,12 +21,34 @@ namespace TechSoft.MyApplication.Api.Controllers
 
 
 
-        [HttpGet]
+        [HttpGet("v1")]
         public IActionResult ConsultarClientes()
         {
+            try
+            {
+                var clientes = _service.ConsultarTodos();
+                return Ok(clientes);
+            }catch(System.Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+            
+        }
 
-            var clientes = _service.ConsultarTodos();
-            return Ok(clientes);
+        [HttpGet()]
+        [ProducesErrorResponseType(typeof(ErrorResult))]
+        public async Task<ActionResult<List<Cliente>>> ConsultarClientesTyped()
+        {
+            try
+            {
+                var clientes = await _service.ConsultarTodos();
+                return Ok(clientes);
+            }
+            catch (System.Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, 
+                    new ErrorResult (2058,ex.Message,ex.StackTrace));
+            }
         }
 
         [HttpPost]
@@ -47,4 +69,11 @@ namespace TechSoft.MyApplication.Api.Controllers
             return Ok(cliente);
         }
     }
+
+
+
+    record ErrorResult
+    (int Error ,string Mensaje, string Detalle);
+
+
 }
